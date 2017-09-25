@@ -85,7 +85,7 @@ public interface CollectionOperations
 
     static < T, E extends IdentificationReduction< T > > List< T > createIdListFrom( Collection< E > list )
     {
-        return createListFromAccordingTo( list, p -> p.getId() );
+        return createListFromAccordingTo( list, p -> p.getIdentification() );
     }
     
     static < T, E extends IdentificationReduction< T > > List< T > createIdListFrom( E[] array )

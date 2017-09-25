@@ -116,7 +116,7 @@ public class CollectionOperationsTest
         Assert.assertTrue( union.size() == 6 );
     }
     
-//    @Test
+    @Test
     public void testDistinctUnionForLargerNumberOfStatements()
     {
         final int N = 50_000;
@@ -135,9 +135,8 @@ public class CollectionOperationsTest
         Collection< Integer > union = CollectionOperations.distinctUnion( list1, list2 );
         long tf = System.currentTimeMillis();
         long total = tf - t0;
-        System.out.println( total );
         Assert.assertTrue( union.size() == ( N + N2 ) );
-        Assert.assertTrue( total < 2500 ); // anything above 2 seconds will be acceptable.
+        Assert.assertTrue( total < 1500 );
     }
     
     private static class TestClassForGetIds implements IdentificationReduction< Integer >
@@ -150,7 +149,7 @@ public class CollectionOperationsTest
         }
 
         @Override
-        public Integer getId()
+        public Integer getIdentification()
         {
             return id;
         }
@@ -170,6 +169,7 @@ public class CollectionOperationsTest
         
         List< Integer > ids = CollectionOperations.createIdListFrom( list );
         
+        // keep the same order
         for( int i = 0; i < N; i++ )
         {
             Assert.assertTrue( ids.get( i ) == i );
@@ -188,7 +188,7 @@ public class CollectionOperationsTest
             list.add( new TestClassForGetIds( i ) );
         }
         
-        List< Integer > ids = CollectionOperations.createListFromAccordingTo( list, p -> p.getId() );
+        List< Integer > ids = CollectionOperations.createListFromAccordingTo( list, p -> p.getIdentification() );
         
         for( int i = 0; i < N; i++ )
         {

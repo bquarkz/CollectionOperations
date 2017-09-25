@@ -10,5 +10,5 @@ public interface IdentificationReduction< ID_TYPE >
      * just to reduce the object to an identification (id)
      * @return
      */
-    ID_TYPE getId();
+    ID_TYPE getIdentification(); // getId
 }
