@@ -1,0 +1,43 @@
+allprojects {
+    apply plugin: 'java'
+	apply plugin: 'java-library'
+	apply plugin: 'maven'
+	apply plugin: 'eclipse'
+	apply plugin: 'jvm-component'
+
+	group = 'com.bquarkz'
+	version = '0.1.0'
+
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
+	
+	tasks.withType(JavaCompile) {
+		options.encoding = 'UTF-8'
+	}
+	
+	javadoc {
+		failOnError = false
+	}
+
+    tasks.withType(Javadoc).each {
+        it.classpath = sourceSets.main.compileClasspath
+    }
+}
+
+repositories {
+	jcenter()
+    mavenCentral()
+	maven { url "http://repo.maven.apache.org/maven2" }
+}
+	
+dependencies {
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// libs for logs
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	compile group: 'log4j', name: 'log4j', version:'1.2.14'
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// libs for testing
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	testCompile group: 'junit', name: 'junit', version:'4.12'
+}
