@@ -1,13 +1,8 @@
 /**
- * Copyright (C) 2017 - Xetec - Flexmaint
- *
- * @author "Nilton Constantino" <nilton@xetec.com>
- *
- * Everything about the respective software copyright can be found in the
- * "LICENSE" file included in the project source tree.
+ * @author "Nilton Constantino" <nilton@gmail.com>
  *
  */
-package com.xetec.utilitybelt.collections;
+package com.bquarkz.collections;
 
 import java.util.ArrayList;
 import java.util.Arrays;
